@@ -61,7 +61,7 @@ function submit_form(){
         'longitude': lng
     }
     $.ajax({
-        url: "http://hw6-env.eba-td38xmia.us-west-2.elasticbeanstalk.com/request_search",
+        url: "http://webapp-env.eba-z23p3unt.us-west-2.elasticbeanstalk.com//request_search",
         type: "GET",
         data: data,
         success: function(data){
@@ -94,7 +94,7 @@ function display_search(data) {
 function ask_details(obj){
     var id = {'id': obj.getAttribute('name')}
     $.ajax({
-        url: "http://hw6-env.eba-td38xmia.us-west-2.elasticbeanstalk.com/request_details",
+        url: "http://webapp-env.eba-z23p3unt.us-west-2.elasticbeanstalk.com/request_details",
         type: "GET",
         data: id,
         success: function(data){
