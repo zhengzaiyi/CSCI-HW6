@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Imformation</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+</head>
+
+<body>
+    <div class="search">
+        <form name="searchform" id="sf" onsubmit="return false">
+            Keyword<span style="color:red;">*</span><br> 
+            <input type="text" name="Keyword" required><br>
+            Distance(miles)&emsp;&emsp;&emsp;Category<span style="color:red;">*</span><br>
+            <input type="number" name="Distance">
+            <select name="Category" > <!--TODO: getsource-->
+                <option value="all" selected>Default</option>
+                <option value="arts">Arts &amp; Entertainment</option>
+                <option value="health"> Health &amp; Medical</option>
+                <option value="hotelstravel">Hotels &amp; Travel</option>
+                <option value="Food">Food</option>
+                <option value="professional">Professional Services</option>
+            </select><br>
+            Location<span style="color:red;">*</span><br> 
+            <input type="text" name="Location" required id="Location"><br>
+            <input type="submit" value="SUBMIT" name="submit" onclick="submit_form()" class ="submit">
+            <input type="button" value="CLEAR" name="reset" onclick="clear_form()" class ="clear">
+            <hr>
+            Want us to auto-detect your location?Check here
+            <input type="checkbox" name="usegoogle" onclick="click_google()">
+        </form>
+    </div>
+
+    <table name="search_table" id="search_table">
+
+    </table>
+
+    <div name="details" id="details">
+
+    </div>
+
+    <script src="frontend.js"></script>
+</body>

@@ -1,0 +1,21 @@
+body {
+    text-align: center;
+}
+
+#sf {
+    text-align: left;
+    color: blue;
+}
+
+img.business_pic {
+    width: 50px;
+    height: 50px;
+}
+
+.details_item {
+    float: left;
+    width: 200px;
+    display: inline;
+}
+
+/* TODO: 设置伪类 */
