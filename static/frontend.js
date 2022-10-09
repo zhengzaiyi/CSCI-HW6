@@ -208,5 +208,5 @@ function make_sortable(table) {
 }
 
 function getMiles(meters) {
-    return (meters * 0.000621371192).toFixed(2);
+    return (meters * 0.000621371192).toFixed(2);  
 }
