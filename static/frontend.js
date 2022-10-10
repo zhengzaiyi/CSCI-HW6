@@ -7,6 +7,7 @@ function clear_form() {
     document.getElementsByName("Category")[0].options[0].selected=true
     document.getElementsByName("search_table")[0].innerHTML = ''
     document.getElementsByName("details")[0].innerHTML = ''
+    document.getElementsByName("details")[0].removeAttribute('id')
 }
 
 function click_google() {
@@ -73,6 +74,8 @@ function submit_form(){
 
 function display_search(data) {
     var table = document.getElementsByName("search_table")[0]
+    document.getElementsByName("details")[0].innerHTML = ''
+    document.getElementsByName("details")[0].removeAttribute('id')
     table.innerHTML = "<thead name=\"entries\">\n<tr>\n<th>No.</th><th>Image</th><th class=\"sortth\">Business Name</th><th class=\"sortth\">Rating</th><th class=\"sortth\">Distance (miles)</th>\n</tr>\n</thead>\n<tbody>\n</tbody>"
     var tbody=table.tBodies[0]
     for (var i = 0; i < data['businesses'].length; i++){
@@ -82,7 +85,7 @@ function display_search(data) {
             + "<td>" + img_href + "</td>"                                               // image
             + "<td class=\"business_name\" name=\"" 
             + data['businesses'][i]['id'] + "\" onclick=\"ask_details(this)\">" 
-            + data['businesses'][i]['name'] + "</td>"                                   // name
+            + '<p id="business_name">' + data['businesses'][i]['name'] + "</p></td>"                                   // name
             + "<td>" + data['businesses'][i]['rating'] + "</td>"                        // rating
             + "<td>" + getMiles(data['businesses'][i]['distance']) + "</td>"            // distance
         tbody.appendChild(tr)
@@ -108,11 +111,21 @@ function display_details(data){
     details.innerHTML = ''
     var insert = ''
 
+    var title = document.createElement("div")
+    title.innerHTML = '<div><h3>' + data['name'] + '</h3><HR></div>'
+
     var status = document.createElement("div")
     if (data['is_closed']) insert = 'Closed';
     else insert = 'Open Now';
-    status.innerHTML = "<h3>Status</h3> "
-    + "<p>" + insert + "</p>"
+    color = {
+        'Open Now': 'green',
+        'Closed': 'red'
+    }
+    status.innerHTML = "<h4>Status</h4> "
+    span = document.createElement('span')
+    span.setAttribute('id', color[insert])
+    span.innerHTML = insert
+    status.appendChild(span)
 
     var category = document.createElement("div")
     insert = ''
@@ -125,11 +138,15 @@ function display_details(data){
 
     var address = document.createElement("div")
     insert = ''
-    address.innerHTML = "<h3>Address</h3> "
-    + "<p>" + data['display_address'] + "</p>"
+    for (var i = 0; i < data['location']['display_address'].length; i++) {
+        insert += data['location']['display_address'][i]
+        if (i < data['location']['display_address'].length - 1) insert += ' '
+    }
+    address.innerHTML = "<h4>Address</h4> "
+    + "<p>" + insert + "</p>"
 
     var phone = document.createElement("div")
-    phone.innerHTML = "<h3>Phone Number</h3> "
+    phone.innerHTML = "<h4>Phone Number</h4> "
     + "<p>" + data['display_phone'] + "</p>"
 
     var trans = document.createElement("div")
@@ -138,26 +155,47 @@ function display_details(data){
         insert += data['transactions'][i]
         if (i < data['transactions'].length - 1) insert += ' | '
     }
-    trans.innerHTML = "<h3>Transactions Supported</h3> "
+    trans.innerHTML = "<h4>Transactions Supported</h4> "
     + "<p>" + insert + "</p>"
 
     var price = document.createElement("div")
-    price.innerHTML = "<h3>Price</h3> "
+    price.innerHTML = "<h4>Price</h4> "
     + "<p>" + data['price'] + "</p>"
 
     var moreinfo = document.createElement("div")
     insert = '<a href="' + data['url'] + '">Yelp</a>'
-    moreinfo.innerHTML = "<h3>More info</h3> "
-    + "<p>" + insert + "</p>"
+    moreinfo.innerHTML = "<h4>More info</h4> "
+    + "<p>" + insert + "</p><br><br>"
 
-    status.setAttribute('id', 'details_item')
-    category.setAttribute('id', 'details_item')
-    address.setAttribute('id', 'details_item')
-    phone.setAttribute('id', 'details_item')
-    trans.setAttribute('id', 'details_item')
-    price.setAttribute('id', 'details_item')
-    moreinfo.setAttribute('id', 'details_item')
+    var placeholder = document.createElement("div")
 
+    var dis_img = document.createElement("div")
+    var img1 = document.createElement("div")
+    img1.setAttribute('class', 'detail_img')
+    img1.setAttribute('id', 'img1')
+    img1.innerHTML = '<img src="'+ data['photos'][0] + '">' + '<p>Photo1</p>'
+
+    var img2 = document.createElement("div")
+    img2.setAttribute('class', 'detail_img')
+    img2.setAttribute('id', 'img2')
+    img2.innerHTML = '<img src="'+ data['photos'][1] + '">' + '<p>Photo2</p>'
+
+    var img3 = document.createElement("div")
+    img3.setAttribute('class', 'detail_img')
+    img3.setAttribute('id', 'img3')
+    img3.innerHTML = '<img src="'+ data['photos'][2] + '">' + '<p>Photo3</p>'
+
+    status.setAttribute('class', 'details_item')
+    category.setAttribute('class', 'details_item')
+    address.setAttribute('class', 'details_item')
+    phone.setAttribute('class', 'details_item')
+    trans.setAttribute('class', 'details_item')
+    price.setAttribute('class', 'details_item')
+    moreinfo.setAttribute('class', 'details_item')
+    placeholder.setAttribute('class', 'details_item')
+
+    details.setAttribute('id', 'details')
+    details.appendChild(title)
     details.appendChild(status)
     details.appendChild(category)
     details.appendChild(address)
@@ -165,6 +203,11 @@ function display_details(data){
     details.appendChild(trans)
     details.appendChild(price)
     details.appendChild(moreinfo)
+    details.appendChild(placeholder)
+    dis_img.appendChild(img1)
+    dis_img.appendChild(img2)
+    dis_img.appendChild(img3)
+    details.appendChild(dis_img)
 
     window.location.hash = "#details"
 }
