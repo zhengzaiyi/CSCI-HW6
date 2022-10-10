@@ -7,16 +7,20 @@ CORS(application, resources=r'/*')
 yelp_api_key = 'vzyregVWvR0tirtuW4dYVHHsipTo63Xz-Z3JPdi0oGWrYRallgGeIcmua0PlmU09xApul0Eo8HSJuR1itXtxgq5J5fQ47KZrqC_kj-Y6nl8ebyhXZ6v0Sx_NtsE-Y3Yx'
 yelp_api = YelpAPI(yelp_api_key)
 @application.route('/')
-def homepage():
+def home():
     return application.send_static_file('index.html')
 
 @application.route('/style.css')
-def styleFile():
+def style():
     return application.send_static_file('style.css')
 
 @application.route('/frontend.js')
-def jsFile():
+def js():
     return application.send_static_file('frontend.js')
+
+@application.route('/bg.png')
+def bg():
+    return application.send_static_file('/bg.png')
 
 @application.route('/request_search', methods=['POST', 'GET'])
 def search():
