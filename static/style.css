@@ -9,7 +9,7 @@ body {
     margin: 0 auto;
     width: 500px;
     height: 80px;
-    background-image: url('bg.png');
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3VrojFl1SFok7_bUpzbhgmJMaxZNNFeyz6GWC_APlIg&s');
     padding: 15px;
     text-align: left;
 }
@@ -134,4 +134,11 @@ a:hover{
     border-radius: 5px;
     background-color: red;
     padding: 5px;
+}
+
+#keyword_input input{
+    width: 490px;
+}
+#location_input input{
+    width: 490px;
 }
