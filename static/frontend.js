@@ -213,38 +213,34 @@ function display_details(data){
 }
 
 function make_sortable(table) {
-    var headers=table.getElementsByTagName("th");
-    for(var i=2;i<headers.length;i++){
+    var headers = table.getElementsByTagName("th");
+    for(var i = 2;i < headers.length; i++){
         // skip
         (function(n){
-            var flag=false;
+            var flag = false;
             headers[n].onclick = function(){
                 var tbody=table.tBodies[0];
                 var rows=tbody.getElementsByTagName("tr");
-                rows=Array.prototype.slice.call(rows,0);
+                rows = Array.prototype.slice.call(rows,0);
                 rows.sort(function(row1,row2){
-                    var cell1=row1.getElementsByTagName("td")[n];
-                    var cell2=row2.getElementsByTagName("td")[n];
-                    var val1=cell1.textContent||cell1.innerText;
-                    var val2=cell2.textContent||cell2.innerText;
+                    var e1 = row1.getElementsByTagName("td")[n];
+                    var e2 = row2.getElementsByTagName("td")[n];
+                    var e1_vel = e1.textContent || e1.innerText;
+                    var e2_val = e2.textContent || e2.innerText;
 
-                    if(val1<val2){
-                        return -1;
-                    }else if(val1>val2){
-                        return 1;
-                    }else{
-                        return 0;
-                    }
+                    if(e1_vel<e2_val) return -1;
+                    else if(e1_vel>e2_val) return 1;
+                    else return 0;
                 });
                 if(flag){
                     rows.reverse();
                 }
-                for(var i=0;i<rows.length;i++){
+                for(var i = 0; i < rows.length; i++){
                     rows[i].getElementsByTagName("td")[0].innerHTML = i + 1;
                     tbody.appendChild(rows[i]);
                 }
 
-                flag=!flag;
+                flag = !flag;
             }
         }(i));
     }

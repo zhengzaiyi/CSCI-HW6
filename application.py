@@ -18,13 +18,10 @@ def style():
 def js():
     return application.send_static_file('frontend.js')
 
-@application.route('/bg.png')
-def bg():
-    return application.send_static_file('/bg.png')
-
 @application.route('/request_search', methods=['POST', 'GET'])
 def search():
     data = dict(request.args)
+    data['limit'] = 10
     if len(data['radius']) > 0:
         data['radius'] = int(float(data['radius']))
     else:
@@ -37,7 +34,12 @@ def details():
     data = dict(request.args)
     result = yelp_api.business_query(data['id'])
     return jsonify(result)
-    
+
+@application.route('/request_reviews', methods=['POST', 'GET'])
+def reviews():
+    data = dict(request.args)
+    result = yelp_api.reviews_query(data['id'])
+    return result
 
 if __name__ == '__main__':
     application.run(host='127.0.0.1')
