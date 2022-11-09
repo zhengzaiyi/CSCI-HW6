@@ -10,9 +10,33 @@ yelp_api = YelpAPI(yelp_api_key)
 def home():
     return application.send_static_file('index.html')
 
-@application.route('/style.css')
+@application.route('/styles.8c8250e859b068b9.css')
 def style():
-    return application.send_static_file('style.css')
+    return application.send_static_file('styles.8c8250e859b068b9.css')
+
+@application.route('/3rdpartylicenses.txt')
+def style1():
+    return application.send_static_file('3rdpartylicenses.txt')
+
+@application.route('/favicon.ico')
+def style2():
+    return application.send_static_file('favicon.ico')
+
+@application.route('/main.e53a8a25828f7405.js')
+def style3():
+    return application.send_static_file('main.e53a8a25828f7405.js')
+
+@application.route('/polyfills.163a4f50bd3dde8d.js')
+def style4():
+    return application.send_static_file('polyfills.163a4f50bd3dde8d.js')
+
+@application.route('/runtime.0f7e59e5c7a0fe54.js')
+def style5():
+    return application.send_static_file('runtime.0f7e59e5c7a0fe54.js')
+
+@application.route('/assets')
+def style6():
+    return application.send_static_file('./assets/structure.ts')
 
 @application.route('/frontend.js')
 def js():

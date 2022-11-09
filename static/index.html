@@ -1,61 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Business Imformation</title>
-        <link rel="stylesheet" href="style.css">
-        <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-    </head>
-    
-    <body>
-        <br>
-        <div id="title">
-            <h3>Business Search</h3>
-            <p>Fill out the form to get business near you</p>
-        </div>
-        <div class="search">
-            <form name="searchform" id="sf" onsubmit="return false">
-                <div id="keyword_input">
-                    Keyword<span style="color:red;">*</span><br>
-                    <input type="text" name="Keyword" required><br>
-                </div>
-                <div id="distance_input" class="input_item">
-                    Distance(miles)<br>
-                    <input type="number" name="Distance">
-                </div>
-                <div id="category_input" class="input_item">
-                    Category<span style="color:red;">*</span><br>
-                    <select name="Category" > <!--TODO: getsource-->
-                        <option value="all" selected>Default</option>
-                        <option value="arts">Arts &amp; Entertainment</option>
-                        <option value="health"> Health &amp; Medical</option>
-                        <option value="hotelstravel">Hotels &amp; Travel</option>
-                        <option value="Food">Food</option>
-                        <option value="professional">Professional Services</option>
-                    </select>
-                </div>
-                <div id="location_input">
-                    Location<span style="color:red;">*</span><br> 
-                    <input type="text" name="Location" required id="Location"><br>
-                </div>
-                
-                <hr>
-                Want us to auto-detect your location?Check here
-                <input type="checkbox" name="usegoogle" onclick="click_google()"><br><br>
-                <input type="submit" value="SUBMIT" name="submit" onclick="submit_form()" class ="submit">
-                <input type="button" value="CLEAR" name="reset" onclick="clear_form()" class ="clear">
-            </form>
-        </div>
-        <br>
-        <table name="search_table" id="search_table">
-    
-        </table>
-        <br>
-        <div name="details">
-    
-        </div>
-        <br> 
-        <script src="frontend.js"></script>
-    </body>
-</html>
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8">
+  <title>Hw8</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKjDcgZdIb98lKnpuW3PKcCAU5Yeu7qBI"></script>
+<style>body{text-align:center}</style><link rel="stylesheet" href="styles.8c8250e859b068b9.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles.8c8250e859b068b9.css"></noscript></head>
+<body>
+  <app-root>
+  </app-root>
+<script src="runtime.0f7e59e5c7a0fe54.js" type="module"></script><script src="polyfills.163a4f50bd3dde8d.js" type="module"></script><script src="main.e53a8a25828f7405.js" type="module"></script>
+
+</body></html>
