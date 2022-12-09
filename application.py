@@ -64,6 +64,11 @@ def reviews():
     data = dict(request.args)
     result = yelp_api.reviews_query(data['id'])
     return result
+@application.route('/request_autocomplete', methods=['POST', 'GET'])
+def auto():
+    data = dict(request.args)
+    result = yelp_api.autocomplete_query(text=data['keyword'])
+    return result
 
 if __name__ == '__main__':
     application.run(host='127.0.0.1')
